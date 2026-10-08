@@ -1,0 +1,48 @@
+[project]
+name = "planexa"
+version = "0.1.0"
+description = "Gestion de proyectos y tareas con Deques doblemente enlazados implementados manualmente."
+readme = "README.md"
+authors = [
+    { name = "Ángel González Muñoz", email = "119265574+xNeuNoRo@users.noreply.github.com" },
+]
+requires-python = ">=3.14"
+dependencies = [
+    "prompt-toolkit>=3.0.53",
+]
+
+[project.scripts]
+# uv run planexa ejecuta planexa.main:main
+planexa = "planexa.main:main"
+
+[build-system]
+requires = ["uv_build>=0.12.17,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.8",
+    "ty>=0.0.82",
+]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+# Cantidad maxima de caracteres permitidos por linea.
+line-length = 100
+
+[tool.ruff.lint]
+# E   => errores de estilo basicos
+# F   => errores tipo Pyflakes
+# I   => orden de imports
+# UP  => sintaxis moderna de Python
+# B   => errores comunes detectados por flake8-bugbear
+# SIM => simplificaciones de codigo innecesariamente complejo
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
